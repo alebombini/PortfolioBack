@@ -13,12 +13,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+
+
 @RestController
 public class PersonaController {
 
     @Autowired
     public IPersonaService iPersoServ;
 
+    
+    //endpoints persona
+
+    
     @GetMapping("personas/traer")
     public List<Persona> getPersona() {
         return iPersoServ.getPersona();

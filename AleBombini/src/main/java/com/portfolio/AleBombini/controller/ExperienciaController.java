@@ -34,7 +34,7 @@ public class ExperienciaController {
     @DeleteMapping("/experiencia/delete/{id}")
     public String deleteExperiencia(@PathVariable int id) {
         iExpeServ.deleteExperiencia(id);
-        return "La persona fue eliminada.";
+        return "La experiencia fue eliminada.";
     }
     
     @PutMapping("experiencia/edit/{id}") //URL/puerto/edit/id?nombre=Ale&apellido=Bombini   PARA EDITAR

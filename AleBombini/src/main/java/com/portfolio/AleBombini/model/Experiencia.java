@@ -20,16 +20,16 @@ public class Experiencia {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     
-    @NotBlank
+   
     private String empresa;
     
-    @NotBlank
+   
     private String cargo;
     
     @Lob
     private String descripcion;
     
-    @NotBlank
+
     private Date inicio;
 
     private Date fin;
