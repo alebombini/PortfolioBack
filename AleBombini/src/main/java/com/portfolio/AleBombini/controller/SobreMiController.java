@@ -42,13 +42,13 @@ public class SobreMiController {
     }
 
     @PostMapping("/sobremi/crear")
-    public String saveSkill(@RequestBody SobreMi sobre) {
+    public String saveSobreMi(@RequestBody SobreMi sobre) {
         iSobreServ.saveSobreMi(sobre);
         return "La informacion fue agregada";
     }
 
     @DeleteMapping("/sobremi/delete/{id}")
-    public String deleteSkill(@PathVariable int id) {
+    public String deleteSobreMi(@PathVariable int id) {
         iSobreServ.deleteSobreMi(id);
         return "La informacion fue eliminada.";
     }
