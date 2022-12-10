@@ -18,6 +18,11 @@ public class ServSobreMi implements ISobreMiService{
         List <SobreMi> sobre = iSobreRepo.findAll();
         return sobre;
     }
+    @Override
+    public SobreMi getOne(int id) {
+        return  iSobreRepo.findById(id).orElse(null);
+    }
+    
 
     @Override
     public void saveSobreMi(SobreMi sobre) {
@@ -33,6 +38,12 @@ public class ServSobreMi implements ISobreMiService{
     public SobreMi findSobreMi(int id) {
         SobreMi sobre = iSobreRepo.findById(id).orElse(null);
         return sobre;
+    }
+
+    @Override
+    public boolean existById(int id) {
+        iSobreRepo.existsById(id);
+        return true; 
     }
 
     

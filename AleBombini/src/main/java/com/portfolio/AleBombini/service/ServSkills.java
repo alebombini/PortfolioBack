@@ -1,4 +1,3 @@
-
 package com.portfolio.AleBombini.service;
 
 import com.portfolio.AleBombini.model.Skills;
@@ -8,15 +7,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ServSkills implements ISkillsService{
+public class ServSkills implements ISkillsService {
 
     @Autowired
     public ISkillsRepo iSkillsRepo;
-    
+
     @Override
     public List<Skills> getSkills() {
-        List <Skills> skills = iSkillsRepo.findAll();
+        List<Skills> skills = iSkillsRepo.findAll();
         return skills;
+    }
+
+    @Override
+    public Skills getOne(int id) {
+        return iSkillsRepo.findById(id).orElse(null);
     }
 
     @Override
@@ -34,6 +38,11 @@ public class ServSkills implements ISkillsService{
         Skills skill = iSkillsRepo.findById(id).orElse(null);
         return skill;
     }
-    
-    
+
+    @Override
+    public boolean existById(int id) {
+        iSkillsRepo.existsById(id);
+        return true;
+    }
+
 }

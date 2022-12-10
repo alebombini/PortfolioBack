@@ -1,5 +1,6 @@
 package com.portfolio.AleBombini.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,21 +17,20 @@ public class Skills {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name = "persona_id")
+    private Long PersonaId;
+
     private String nombreS;
 
-    
-    private String nivel;
-
+    private int nivel;
 
     public Skills() {
     }
 
-    public Skills(String nombreS, String nivel, String urlFotoProyecto) {
+    public Skills(Long PersonaId, String nombreS, int nivel) {
+        this.PersonaId = PersonaId;
         this.nombreS = nombreS;
         this.nivel = nivel;
-       
     }
-    
-    
-    
+
 }

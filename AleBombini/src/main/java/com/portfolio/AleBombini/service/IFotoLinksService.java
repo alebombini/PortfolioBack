@@ -11,6 +11,10 @@ public interface IFotoLinksService {
     
     public FotoLinks getOne (int id);
     
+    public void deleteFotoLinks(int id);
+    
     public void saveFotoLinks(FotoLinks foto);
+
+    public boolean existById(int id);
     
 }

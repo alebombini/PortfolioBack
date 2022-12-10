@@ -27,6 +27,17 @@ public class ServFotoLinks implements IFotoLinksService{
     public void saveFotoLinks(FotoLinks foto) {
         fotoRepo.save(foto);
     }
+
+    @Override
+    public void deleteFotoLinks(int id) {
+        fotoRepo.deleteById(id);
+    }
+
+    @Override
+    public boolean existById(int id) {
+        fotoRepo.existsById(id);
+        return true;
+    }
     
     
 }

@@ -10,6 +10,9 @@ public interface IProyectosService {
     //traer lista de objetos
     public List<Proyectos> getProyectos();
     
+    //traer un objeto por id
+    public Proyectos getOne (int id);
+    
     //guardar objeto
     public void saveProyecto (Proyectos proye);
     
@@ -18,5 +21,7 @@ public interface IProyectosService {
     
     //buscar proyecto x id
     public Proyectos findProyecto (int id);
+
+    public boolean existById(int id);
     
 }

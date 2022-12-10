@@ -9,6 +9,9 @@ public interface ISkillsService {
      //traer lista de objetos
     public List<Skills> getSkills();
     
+    //traer un objeto por id
+    public Skills getOne (int id);
+    
     //guardar objeto
     public void saveSkill (Skills skill);
     
@@ -17,6 +20,8 @@ public interface ISkillsService {
     
     //buscar proyecto x id
     public Skills findSkill (int id);
+
+    public boolean existById(int id);
     
     
 }

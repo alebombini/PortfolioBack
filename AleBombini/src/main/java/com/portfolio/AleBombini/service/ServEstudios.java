@@ -40,5 +40,10 @@ public class ServEstudios implements IEstudiosService {
     public void deleteEstudios(int id) {
             estuRepo.deleteById(id);
     }
+
+    @Override
+    public boolean existById(int id) {
+            estuRepo.existsById(id);
+        return true;    }
     
 }

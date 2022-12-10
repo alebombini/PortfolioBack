@@ -5,62 +5,76 @@ import com.portfolio.AleBombini.service.IExperienciaService;
 import java.sql.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class ExperienciaController {
 
     @Autowired
     public IExperienciaService iExpeServ;
-    
-   @GetMapping("experiencia/traer")
-   public List<Experiencia> getExperiencia() {
+
+    @GetMapping("experiencia/traer")
+    public List<Experiencia> getExperiencia() {
         return iExpeServ.getExperiencia();
     }
-   
+
+    @GetMapping("experiencia/detail/{id}")
+    public ResponseEntity<Experiencia> getById(@PathVariable("id") int id) {
+        if (iExpeServ.existById(id)) {
+            Experiencia experiencia = iExpeServ.getOne(id);
+            return new ResponseEntity(experiencia, HttpStatus.OK);
+        } else {
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+
+    }
+
     @PostMapping("experiencia/crear")
-    public String saveExperiencia (@RequestBody Experiencia expe) {
+    public String saveExperiencia(@RequestBody Experiencia expe) {
         iExpeServ.saveExperiencia(expe);
         return "La experiencia fue agregada";
     }
-    
+
     @DeleteMapping("/experiencia/delete/{id}")
     public String deleteExperiencia(@PathVariable int id) {
         iExpeServ.deleteExperiencia(id);
         return "La experiencia fue eliminada.";
     }
-    
+
     @PutMapping("experiencia/edit/{id}") //URL/puerto/edit/id?nombre=Ale&apellido=Bombini   PARA EDITAR
     public Experiencia editExperiencia(@PathVariable int id,
             @RequestParam("cargo") String nuevoCargo, //paso los cambios x URL
             @RequestParam("empresa") String nuevaEmpresa,
-            @RequestParam("descripcion") String nuevaDesc, 
+            @RequestParam("logo") String nuevoLogo,
+            @RequestParam("descripcion") String nuevaDesc,
             @RequestParam("inicio") Date nuevoInicio,
             @RequestParam("fin") Date nuevoFin) {
         Experiencia expe = iExpeServ.getOne(id);      //busco la experiencia y le asigno variable  
         expe.setCargo(nuevoCargo);              //guardo los cambios en la variable
-        expe.setEmpresa(nuevaEmpresa) ;
+        expe.setEmpresa(nuevaEmpresa);
+        expe.setLogo(nuevoLogo);
         expe.setDescripcion(nuevaDesc);              //guardo los cambios en la variable
-        expe.setInicio(nuevoInicio) ;
-        expe.setFin(nuevoFin) ;
+        expe.setInicio(nuevoInicio);
+        expe.setFin(nuevoFin);
 
         iExpeServ.saveExperiencia(expe);         //le digo que guarde en la entidad experiencia
 
         return expe;
     }
 
-    
-    
-    
-    
-/*
+    /*
     @GetMapping("/lista")
     public ResponseEntity<List<Experiencia>> list() {
         List<Experiencia> list = iExpeServ.list();
@@ -76,8 +90,8 @@ public class ExperienciaController {
         /*   
     if (expeService.existByCargo(dtoExp.getCargo()))
         return "Esa experiencia existe";
-         *///este metodo no me funciona porque no tengo creada la clase mensaje en un package securiry 
-        //en caso de querer agregarlo tengo que cambiar String por PesponseEntity<?>
+     *///este metodo no me funciona porque no tengo creada la clase mensaje en un package securiry 
+    //en caso de querer agregarlo tengo que cambiar String por PesponseEntity<?>
 /*
         Experiencia experiencia = new Experiencia(dtoExp.getCargo(),
                 dtoExp.getEmpresa(), dtoExp.getDescripcion(),
@@ -110,5 +124,5 @@ public class ExperienciaController {
    iExpeServ.delete(id);
    return "Experiencia eliminada";
     }
-   */ 
+     */
 }

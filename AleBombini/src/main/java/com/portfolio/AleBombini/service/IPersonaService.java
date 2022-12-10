@@ -7,6 +7,9 @@ import java.util.List;
 
 public interface IPersonaService {
     
+   //login
+    public Persona loginPersona(String pers, String clave);
+   
 //traer persona
     public List<Persona> getPersona();
     

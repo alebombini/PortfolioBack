@@ -16,6 +16,8 @@ public interface IExperienciaService {
     public void saveExperiencia(Experiencia expe);
     
     public void deleteExperiencia(int id);
+
+    public boolean existById(int id);
     
     
 }

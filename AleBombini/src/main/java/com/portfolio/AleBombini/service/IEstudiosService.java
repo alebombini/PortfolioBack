@@ -16,6 +16,8 @@ public interface IEstudiosService {
     public void saveEstudios(Estudios estu);
     
     public void deleteEstudios(int id);
+
+    public boolean existById(int id);
     
     
 }

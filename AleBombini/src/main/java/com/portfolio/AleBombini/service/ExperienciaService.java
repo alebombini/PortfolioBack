@@ -43,6 +43,12 @@ public class ExperienciaService implements IExperienciaService {
         expeRepo.deleteById(id);
     }
 
+    @Override
+    public boolean existById(int id) {
+        expeRepo.existsById(id);
+        return true;
+    }
+
     
   
 }

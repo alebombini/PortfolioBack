@@ -17,7 +17,12 @@ public class ServProyectos implements IProyectosService {
         List<Proyectos> proyectos = iProyeRepo.findAll();
         return proyectos;
     }
-
+    @Override
+    public Proyectos getOne(int id) {
+        return  iProyeRepo.findById(id).orElse(null);
+    }
+    
+    
     @Override
     public void saveProyecto(Proyectos proye) {
         iProyeRepo.save(proye);
@@ -32,6 +37,12 @@ public class ServProyectos implements IProyectosService {
     public Proyectos findProyecto(int id) {
         Proyectos proyecto = iProyeRepo.findById(id).orElse(null);
          return proyecto;
+    }
+
+    @Override
+    public boolean existById(int id) {
+        iProyeRepo.existsById(id);
+        return true; 
     }
 
 }

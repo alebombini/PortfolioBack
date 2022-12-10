@@ -10,8 +10,12 @@ public interface ISobreMiService {
      //traer lista de objetos
     public List<SobreMi> getSobreMi();
     
+    //traer un objeto por id
+    public SobreMi getOne (int id);
+    
     //guardar objeto
     public void saveSobreMi (SobreMi sobremi);
+    
     
     //eliminar objeto , lo buscamos por id
     public void deleteSobreMi(int id);
@@ -25,4 +29,6 @@ public interface ISobreMiService {
     public void deleteSobreMiPresentacion(int id);
     
     */
+
+    public boolean existById(int id);
 }

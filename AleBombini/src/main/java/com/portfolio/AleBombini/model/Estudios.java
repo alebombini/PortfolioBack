@@ -1,5 +1,6 @@
 package com.portfolio.AleBombini.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,15 +27,21 @@ public class Estudios {
     private Date inicio;
 
     private Date fin;
+    
+    @Column (name= "persona_id")
+    private Long PersonaId;
 
     public Estudios() {
     }
 
-    public Estudios(String titulo, String institucion, String descripcion, Date inicio, Date fin) {
+    public Estudios(String titulo, String institucion, Date inicio, Date fin, Long PersonaId) {
         this.titulo = titulo;
         this.institucion = institucion;
         this.inicio = inicio;
         this.fin = fin;
+        this.PersonaId = PersonaId;
     }
+
+   
 
 }
