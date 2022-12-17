@@ -56,12 +56,14 @@ public class FotoLinksController {
     @PutMapping("fotoLinks/edit/{id}") //URL/puerto/edit/id?nombre=Ale&apellido=Bombini   PARA EDITAR
     public FotoLinks editFotoLinks (@PathVariable int id,
             @RequestParam ("PersonaId") Long nuevaPersId,
-            @RequestParam("seccion") String nuevaSeccion, //paso los cambios x URL
+            @RequestParam("seccion") String nuevaSeccion,
+            @RequestParam ("link") String nuevoLink,           //paso los cambios x URL
             @RequestParam("url") String nuevaUrl)
         {
         FotoLinks foto = iFotoServ.getOne(id); //busco la experiencia y le asigno variable  
         foto.setPersonaId(nuevaPersId);
-        foto.setSeccion(nuevaSeccion);              //guardo los cambios en la variable
+        foto.setSeccion(nuevaSeccion); 
+        foto.setLink(nuevoLink); //guardo los cambios en la variable
         foto.setUrl_foto(nuevaUrl) ;             //guardo los cambios en la variable
         
 

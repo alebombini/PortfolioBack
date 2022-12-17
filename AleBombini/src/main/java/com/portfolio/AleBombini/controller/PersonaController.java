@@ -2,6 +2,7 @@ package com.portfolio.AleBombini.controller;
 
 import com.portfolio.AleBombini.model.Persona;
 import com.portfolio.AleBombini.service.IPersonaService;
+import java.sql.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -56,10 +57,32 @@ public class PersonaController {
     @PutMapping("personas/edit/{id}") //URL/puerto/edit/id?nombre=Ale&apellido=Bombini   PARA EDITAR
     public Persona editPersona(@PathVariable Long id,
             @RequestParam("nombre") String nuevoNombre, //paso los cambios x URL
-            @RequestParam("apellido") String nuevoApellido) {
+            @RequestParam("apellido") String nuevoApellido,
+            @RequestParam("clave") String nuevaClave, //paso los cambios x URL
+            @RequestParam("titulo") String nuevoTitulo, //paso los cambios x URL
+            @RequestParam("email") String nuevoEmail,
+            @RequestParam("whatsapp") String nuevoWhatsapp, //paso los cambios x URL
+            @RequestParam("UrlTelegram") String nuevaUrlTele,
+            @RequestParam("UrlLinkedIn") String nuevaUrlLinkedIn,
+            @RequestParam("presentacion") String nuevaPresentacion, //paso los cambios x URL
+            @RequestParam("urlVideo") String nuevaUrlVideo,
+            @RequestParam("urlFoto") String nuevaUrlFoto)
+    
+    
+    
+    {
         Persona perso = iPersoServ.findPersona(id);  //busco la persona y le asigno variable  
         perso.setNombre(nuevoNombre);        //guardo los cambios en la variable
         perso.setApellido(nuevoApellido);
+        perso.setClave(nuevaClave);
+        perso.setTitulo(nuevoTitulo);
+        perso.setEmail(nuevoEmail);
+        perso.setWhatsapp (nuevoWhatsapp);
+        perso.setUrlTelegram (nuevaUrlTele);
+        perso.setUrlLinkedIn (nuevaUrlLinkedIn);
+        perso.setPresentacion (nuevaPresentacion);
+        perso.setUrlVideo (nuevaUrlVideo);
+        perso.setUrlFoto(nuevaUrlFoto);
 
         iPersoServ.savePersona(perso);         //le digo que guarde en la entidad persona
 

@@ -25,12 +25,12 @@ public class SobreMiController {
     public ISobreMiService iSobreServ;
 
 //endpoints
-    @GetMapping("sobremi/traer")
+    @GetMapping("/sobremi/traer")
     public List<SobreMi> getSobreMi() {
         return iSobreServ.getSobreMi();
     }
 
-    @GetMapping("sobremi/detail/{id}")
+    @GetMapping("/sobremi/detail/{id}")
     public ResponseEntity<SobreMi> getById(@PathVariable("id") int id) {
         if (iSobreServ.existById(id)) {
             SobreMi sobremi = iSobreServ.getOne(id);
@@ -53,11 +53,11 @@ public class SobreMiController {
         return "La informacion fue eliminada.";
     }
 
-    @PutMapping("sobremi/edit/{id}")          //URL/puerto/sobremi/edit/id?   PARA EDITAR
+    @PutMapping("/sobremi/edit/{id}")          //URL/puerto/sobremi/edit/id?   PARA EDITAR
     public SobreMi editSobreMi(@PathVariable int id,
             @RequestParam("presentacion") String nuevaPresenta, //paso los cambios x URL
             @RequestParam("urlVideo") String nuevaUrl,
-            @RequestParam("personaId") Long personaId) {
+            @RequestParam("PersonaId") Long personaId) {
         SobreMi sobre = iSobreServ.findSobreMi(id);  //busco la persona y le asigno variable  
         sobre.setPresentacion(nuevaPresenta);        //guardo los cambios en la variable
         sobre.setUrlVideo(nuevaUrl);

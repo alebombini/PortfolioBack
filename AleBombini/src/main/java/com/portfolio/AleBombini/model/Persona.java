@@ -55,6 +55,15 @@ public class Persona {
     @Lob
     @NotBlank
     private String UrlLinkedIn;
+    
+    @Lob
+    private String presentacion;
+    
+    @Lob 
+    private String urlVideo;
+    
+    @Lob
+    private String urlFoto;
 
     @OneToMany(mappedBy = "PersonaId")
     private List<SobreMi> sobremi;
