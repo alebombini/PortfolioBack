@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IPersonaRepo extends JpaRepository<Persona, Long> {
     public List<Persona> findByEmailAndClave(String email, String clave);
+
+   
 }

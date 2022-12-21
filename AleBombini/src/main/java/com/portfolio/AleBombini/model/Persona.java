@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -56,16 +57,7 @@ public class Persona {
     @NotBlank
     private String UrlLinkedIn;
     
-    @Lob
-    private String presentacion;
-    
-    @Lob 
-    private String urlVideo;
-    
-    @Lob
-    private String urlFoto;
-
-    @OneToMany(mappedBy = "PersonaId")
+   @OneToMany(mappedBy = "PersonaId")
     private List<SobreMi> sobremi;
 
     @OneToMany(mappedBy = "PersonaId")
@@ -85,6 +77,8 @@ public class Persona {
 
     public Persona() {
     }
+
+   
 
     public Persona(String nombre, String apellido, String clave, String titulo, Date fechaNac, String email, String UrlGithub, String whatsapp, String UrlTelegram, String UrlLinkedIn, List<SobreMi> sobremi, List<Estudios> estudios, List<Experiencia> experiencia, List<FotoLinks> fotoLinks, List<Proyectos> proyectos, List<Skills> skills) {
         this.nombre = nombre;

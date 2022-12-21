@@ -48,5 +48,10 @@ public class ServPersona implements IPersonaService{
         }
         return null;
     }
-    
+/*
+    @Override
+    public void updateTitulo(String titulo) {
+       ipersoRepo.setTitulo(titulo);
+    }
+   */ 
 }

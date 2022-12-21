@@ -54,7 +54,14 @@ public class SobreMiController {
     }
 
     @PutMapping("/sobremi/edit/{id}")          //URL/puerto/sobremi/edit/id?   PARA EDITAR
-    public SobreMi editSobreMi(@PathVariable int id,
+    public SobreMi editSobreMi(@RequestBody SobreMi sobre){
+    iSobreServ.saveSobreMi(sobre);
+       return sobre;
+    
+    }
+    
+    //asi seria un @requestParam 
+    /*public SobreMi editSobreMi(@PathVariable int id,
             @RequestParam("presentacion") String nuevaPresenta, //paso los cambios x URL
             @RequestParam("urlVideo") String nuevaUrl,
             @RequestParam("PersonaId") Long personaId) {
@@ -66,6 +73,6 @@ public class SobreMiController {
         iSobreServ.saveSobreMi(sobre);         //le digo que guarde en la entidad persona
 
         return sobre;
-    }
+    }*/
 
 }

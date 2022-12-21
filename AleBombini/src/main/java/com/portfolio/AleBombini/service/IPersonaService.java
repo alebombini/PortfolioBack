@@ -22,4 +22,7 @@ public interface IPersonaService {
     //buscar persona x id
     public Persona findPersona (Long id);
     
+    
+   // public void updateTitulo (String titulo);
+    
 }

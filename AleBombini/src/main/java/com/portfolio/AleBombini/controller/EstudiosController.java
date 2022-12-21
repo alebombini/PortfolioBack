@@ -59,19 +59,8 @@ public class EstudiosController {
     }
     
   @PutMapping("estudios/edit/{id}") //URL/puerto/edit/id?nombre=Ale&apellido=Bombini   PARA EDITAR
-    public Estudios editEstudios(@PathVariable int id,
-            @RequestParam("titulo") String nuevoTitulo, //paso los cambios x URL
-            @RequestParam("institucion") String nuevaInstitucion,
-            @RequestParam("inicio") Date nuevoInicio,
-            @RequestParam("fin") Date nuevoFin) {
-        Estudios estu = iEstuServ.getEstudio(id);      //busco la experiencia y le asigno variable  
-        estu.setTitulo(nuevoTitulo);              //guardo los cambios en la variable
-        estu.setInstitucion(nuevaInstitucion) ;             //guardo los cambios en la variable
-        estu.setInicio(nuevoInicio) ;
-        estu.setFin(nuevoFin) ;
-
+    public Estudios editEstudios(@RequestBody Estudios estu) {
         iEstuServ.saveEstudios(estu);         //le digo que guarde en la entidad experiencia
-
         return estu;
     }
 }

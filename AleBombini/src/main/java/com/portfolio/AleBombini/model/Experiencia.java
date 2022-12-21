@@ -1,12 +1,10 @@
 package com.portfolio.AleBombini.model;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
-import jakarta.validation.constraints.NotBlank;
 import java.sql.Date;
 import lombok.Getter;
 import lombok.Setter;
@@ -42,7 +40,7 @@ public class Experiencia {
     public Experiencia() {
     }
 
-    public Experiencia(Long PersonaId, String empresa, String logo, String cargo, String descripcion, Date inicio, Date fin) {
+    public Experiencia(Long PersonaId, String empresa, String logo, String cargo, String descripcion, Date inicio, Date fin, boolean esTrabajoActual) {
         this.PersonaId = PersonaId;
         this.empresa = empresa;
         this.logo = logo;
@@ -50,7 +48,11 @@ public class Experiencia {
         this.descripcion = descripcion;
         this.inicio = inicio;
         this.fin = fin;
+        this.esTrabajoActual = esTrabajoActual;
     }
+
+   /* public Experiencia orElse(Object object) {
+    }*/
 
     public Experiencia orElse(Object object) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

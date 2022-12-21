@@ -39,7 +39,7 @@ public class PersonaController {
     }
     @GetMapping("/personas/traer/perfil")
     public Persona findPersona(){
-        return iPersoServ.findPersona((long)2);
+        return iPersoServ.findPersona((long)1); //uso el 1 porque es la unica persona cargada 
     }
     
     @PostMapping("/personas/crear")
@@ -54,39 +54,31 @@ public class PersonaController {
         return "La persona fue eliminada.";
     }
 
-    @PutMapping("personas/edit/{id}") //URL/puerto/edit/id?nombre=Ale&apellido=Bombini   PARA EDITAR
-    public Persona editPersona(@PathVariable Long id,
-            @RequestParam("nombre") String nuevoNombre, //paso los cambios x URL
-            @RequestParam("apellido") String nuevoApellido,
-            @RequestParam("clave") String nuevaClave, //paso los cambios x URL
-            @RequestParam("titulo") String nuevoTitulo, //paso los cambios x URL
-            @RequestParam("email") String nuevoEmail,
-            @RequestParam("whatsapp") String nuevoWhatsapp, //paso los cambios x URL
-            @RequestParam("UrlTelegram") String nuevaUrlTele,
-            @RequestParam("UrlLinkedIn") String nuevaUrlLinkedIn,
-            @RequestParam("presentacion") String nuevaPresentacion, //paso los cambios x URL
-            @RequestParam("urlVideo") String nuevaUrlVideo,
-            @RequestParam("urlFoto") String nuevaUrlFoto)
-    
-    
-    
-    {
-        Persona perso = iPersoServ.findPersona(id);  //busco la persona y le asigno variable  
-        perso.setNombre(nuevoNombre);        //guardo los cambios en la variable
-        perso.setApellido(nuevoApellido);
-        perso.setClave(nuevaClave);
-        perso.setTitulo(nuevoTitulo);
-        perso.setEmail(nuevoEmail);
-        perso.setWhatsapp (nuevoWhatsapp);
-        perso.setUrlTelegram (nuevaUrlTele);
-        perso.setUrlLinkedIn (nuevaUrlLinkedIn);
-        perso.setPresentacion (nuevaPresentacion);
-        perso.setUrlVideo (nuevaUrlVideo);
-        perso.setUrlFoto(nuevaUrlFoto);
-
-        iPersoServ.savePersona(perso);         //le digo que guarde en la entidad persona
-
-        return perso;
+    @PutMapping("personas/edit/{id}") 
+    public Persona editPersona( @RequestBody Persona pers) {
+        iPersoServ.savePersona(pers);
+        return pers;
     }
-
+ 
+    @PutMapping ("personas/editTitulo/{id}") 
+    public Persona editarPersona (@PathVariable Long id, @RequestBody Persona per){
+        Persona perso = iPersoServ.findPersona(id);
+        perso.setTitulo( per.getTitulo());
+       return perso;
+    } 
+    
+    
+   /*
+    @PutMapping("personas/edit/titulo")
+    public void updateTitulo(@RequestBody String titu){
+        iPersoServ.updateTitulo(titu);
+      
+    
+    
+    
+    
+    
+    }
+*/
+    
 }

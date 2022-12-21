@@ -54,17 +54,8 @@ public class ProyectosController {
     }
 
     @PutMapping("proyectos/edit/{id}") //URL/puerto/proyectos/edit/id?   PARA EDITAR
-    public Proyectos editProyecto(@PathVariable int id,
-            @RequestParam("nombreP") String nuevoNombreP, //paso los cambios x URL
-            @RequestParam("urlProyecto") String nuevaUrlProy,
-            @RequestParam("urlFotoProyecto") String nuevaUrlFotoProy) {
-        Proyectos proye = iProyeServ.findProyecto(id);  //busco la persona y le asigno variable  
-        proye.setNombreP(nuevoNombreP);        //guardo los cambios en la variable
-        proye.setUrlProyecto(nuevaUrlProy);
-        proye.setUrlFotoProyecto(nuevaUrlFotoProy);
-
-        iProyeServ.saveProyecto(proye);         //le digo que guarde en la entidad persona
-
+    public Proyectos editProyecto (@RequestBody Proyectos proye) {
+        iProyeServ.saveProyecto(proye);
         return proye;
     }
 

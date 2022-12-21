@@ -54,15 +54,8 @@ public class SkillsController {
     }
 
     @PutMapping("skills/edit/{id}") //URL/puerto/proyectos/edit/id?   PARA EDITAR
-    public Skills editSkill(@PathVariable int id,
-            @RequestParam("nombreS") String nuevoNombreS, //paso los cambios x URL
-            @RequestParam("nivel") int nuevoNivel) {
-        Skills skill = iSkillsServ.findSkill(id);  //busco la persona y le asigno variable  
-        skill.setNombreS(nuevoNombreS);        //guardo los cambios en la variable
-        skill.setNivel(nuevoNivel);
-
-        iSkillsServ.saveSkill(skill);         //le digo que guarde en la entidad persona
-
+    public Skills editSkill(@RequestBody Skills skill) {
+        iSkillsServ.saveSkill(skill);
         return skill;
     }
 }
