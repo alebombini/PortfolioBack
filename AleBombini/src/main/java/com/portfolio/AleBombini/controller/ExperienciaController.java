@@ -51,7 +51,7 @@ public class ExperienciaController {
         return "La experiencia fue eliminada.";
     }
 
-    @PutMapping("experiencia/edit/{id}") //URL/puerto/edit/id?nombre=Ale&apellido=Bombini   PARA EDITAR
+    @PutMapping("experiencia/edit/{id}") //URL/puerto/edit/id?   PARA EDITAR
     public Experiencia editExperiencia(@RequestBody Experiencia expe) {
             iExpeServ.saveExperiencia(expe);
         return expe;

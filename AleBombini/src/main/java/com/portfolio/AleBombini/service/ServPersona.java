@@ -36,13 +36,12 @@ public class ServPersona implements IPersonaService{
 
     @Override
     public Persona findPersona(Long id) {
-         Persona persona = ipersoRepo.findById(id).orElse(null);
-         return persona;
+         return ipersoRepo.findById(id).orElse(null);
     }
 
     @Override
       public Persona loginPersona(String email, String clave) {
-        List <Persona> personas = ipersoRepo.findByEmailAndClave(email,clave);
+        List <Persona> personas = ipersoRepo.findByEmailAndClave(email, clave);
         if(!personas.isEmpty()){
             return personas.get(0);  //si la lista no esta vacia me devuelve la de la posicion 0
         }
