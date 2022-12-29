@@ -23,7 +23,6 @@ public class ServSobreMi implements ISobreMiService{
         return  iSobreRepo.findById(id).orElse(null);
     }
     
-
     @Override
     public void saveSobreMi(SobreMi sobre) {
         iSobreRepo.save(sobre);

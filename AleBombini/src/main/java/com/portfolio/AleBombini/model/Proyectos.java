@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,6 +22,9 @@ public class Proyectos {
     private Long PersonaId;
 
     private String nombreP;
+    
+    @Lob
+    private String descripcionP;
 
     private String urlProyecto;
 
@@ -29,11 +33,13 @@ public class Proyectos {
     public Proyectos() {
     }
 
-    public Proyectos(Long PersonaId, String nombreP, String urlProyecto, String urlFotoProyecto) {
+    public Proyectos(Long PersonaId, String nombreP, String descripcionP, String urlProyecto, String urlFotoProyecto) {
         this.PersonaId = PersonaId;
         this.nombreP = nombreP;
+        this.descripcionP = descripcionP;
         this.urlProyecto = urlProyecto;
         this.urlFotoProyecto = urlFotoProyecto;
     }
 
+  
 }

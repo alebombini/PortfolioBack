@@ -23,12 +23,5 @@ public interface ISobreMiService {
     //buscar proyecto x id
     public SobreMi findSobreMi (int id);
     
-    /*modificar partes de la entidad
-    public void saveSobreMiUrlVideo (int  id);
-    
-    public void deleteSobreMiPresentacion(int id);
-    
-    */
-
     public boolean existById(int id);
 }

@@ -31,7 +31,7 @@ public class SobreMiController {
     }
 
     @GetMapping("/sobremi/detail/{id}")
-    public ResponseEntity<SobreMi> getById(@PathVariable("id") int id) {
+    public ResponseEntity<SobreMi> getById(@PathVariable int id) {
         if (iSobreServ.existById(id)) {
             SobreMi sobremi = iSobreServ.getOne(id);
             return new ResponseEntity(sobremi, HttpStatus.OK);
@@ -54,7 +54,7 @@ public class SobreMiController {
     }
 
     @PutMapping("/sobremi/edit/{id}")          //URL/puerto/sobremi/edit/id?   PARA EDITAR
-    public SobreMi editSobreMi(@RequestBody SobreMi sobre){
+    public SobreMi editSobreMi(@PathVariable int id, @RequestBody SobreMi sobre){
     iSobreServ.saveSobreMi(sobre);
        return sobre;
     
