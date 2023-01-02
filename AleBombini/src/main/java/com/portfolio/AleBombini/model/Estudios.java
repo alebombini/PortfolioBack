@@ -24,9 +24,9 @@ public class Estudios {
 
     private String institucion;
 
-    private Date inicio;
+    private String inicio;
 
-    private Date fin;
+    private String fin;
     
     @Column (name= "persona_id")
     private Long PersonaId;
@@ -34,7 +34,7 @@ public class Estudios {
     public Estudios() {
     }
 
-    public Estudios(String titulo, String institucion, Date inicio, Date fin, Long PersonaId) {
+    public Estudios(String titulo, String institucion, String inicio, String fin, Long PersonaId) {
         this.titulo = titulo;
         this.institucion = institucion;
         this.inicio = inicio;

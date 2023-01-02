@@ -31,16 +31,16 @@ public class Experiencia {
     @Column(name = "descripcion", columnDefinition = "LONGTEXT")
     private String descripcion;
 
-    private Date inicio;
+    private String inicio;
 
-    private Date fin;
+    private String fin;
     
     private boolean esTrabajoActual;
 
     public Experiencia() {
     }
 
-    public Experiencia(Long PersonaId, String empresa, String logo, String cargo, String descripcion, Date inicio, Date fin, boolean esTrabajoActual) {
+    public Experiencia(Long PersonaId, String empresa, String logo, String cargo, String descripcion, String inicio, String fin, boolean esTrabajoActual) {
         this.PersonaId = PersonaId;
         this.empresa = empresa;
         this.logo = logo;
